@@ -3,6 +3,7 @@
 
 #include "DRV8833Motor.h"
 #include "ServoController.h"
+#include "Sensors.h"
 
 #define SERVO_PWM 13
 #define MOTOR_AIN1 4
@@ -17,10 +18,13 @@ class Gally {
     void moveForward();
     void turnLeft();
     void turnRight();
+    int getFrontDistance();
+    int getRightDistance();
 
   private:
     DRV8833Motor motor;
     ServoController servo;
+    Sensors sensors;
 };
 
 #endif 
