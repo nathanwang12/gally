@@ -11,7 +11,7 @@ void DRV8833Motor::init() {
     pinMode(pinBIN2, OUTPUT);
 }
 
-void DRV8833Motor::set_speed(int speed) {
+void DRV8833Motor::setSpeed(int speed) {
     speed = constrain(speed, 0, 255);
     analogWrite(pinAIN1, speed);
     digitalWrite(pinAIN2, LOW);

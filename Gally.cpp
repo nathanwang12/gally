@@ -10,44 +10,29 @@ void Gally::init() {
 
 void Gally::moveForward() {
   Serial.println("Gally moving forward");
-  servo.forward();
-
-  // Serial.println("Gally moving forward");
-  // // motor.set_speed(200);
-  // digitalWrite(motor.pinAIN1, HIGH);
-  // digitalWrite(motor.pinAIN2, LOW);
+  motor.setSpeed(100);
+  delay(1000);
+  motor.stop();
 }
 
 void Gally::turnLeft() {
   Serial.println("Gally turning left");
   servo.left();
-
-  // Serial.println("Gally turning left");
-  // motor.stop();
-  // servo.left();
-  // delay(TURN_TIME);
-  // // motor.set_speed(200);
-  // digitalWrite(motor.pinAIN1, HIGH);
-  // digitalWrite(motor.pinAIN2, LOW);
-  // delay(TURN_TIME);
-  // motor.stop();
-  // servo.forward();
+  delay(500);
+  motor.setSpeed(100);
+  delay(500);
+  motor.stop();
+  servo.forward();
 }
 
 void Gally::turnRight() {
   Serial.println("Gally turning right");
   servo.right();
-
-  // Serial.println("Gally turning right");
-  // motor.stop();
-  // servo.right();
-  // delay(TURN_TIME);
-  // // motor.set_speed(200);
-  // digitalWrite(motor.pinAIN1, HIGH);
-  // digitalWrite(motor.pinAIN2, LOW);
-  // delay(TURN_TIME);
-  // motor.stop();
-  // servo.forward();
+  delay(500);
+  motor.setSpeed(100);
+  delay(500);
+  motor.stop();
+  servo.forward();
 }
 
 int Gally::getFrontDistance() {
