@@ -6,8 +6,10 @@
 #include "Sensors.h"
 
 #define SERVO_PWM 13
-#define MOTOR_AIN1 4
-#define MOTOR_AIN2 5
+#define MOTOR_AIN1 15
+#define MOTOR_AIN2 33
+#define MOTOR_BIN1 12
+#define MOTOR_BIN2 27
 #define TURN_TIME 2000
 
 class Gally {

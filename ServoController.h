@@ -8,9 +8,9 @@ private:
     Servo myservo;
     int pwmPin;
 
-    const int LEFT_POS = 45;
+    const int LEFT_POS = 0;
     const int FORWARD_POS = 90;
-    const int RIGHT_POS = 135;
+    const int RIGHT_POS = 180;
 
 public:
     ServoController(int pwmPin);
