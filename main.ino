@@ -22,56 +22,29 @@ void setup() {
 
 void loop() {
   int frontDistance = gally.getFrontDistance();
-  int rightDistance = gally.getRightDistance();
-  Serial.print("Front Distance: ");
-  Serial.println(frontDistance);
-  Serial.print("Right Distance: ");
-  Serial.println(rightDistance);
-  // gally.servoLeft();
-  // delay(500);
-  // gally.servoRight();
-  // delay(500);
-  // gally.servoForward();
-  // delay(500);
-  // gally.moveForward();
-  // delay(500);
-  // int frontDistance = gally.getFrontDistance();
-  // int rightDistance = gally.getRightDistance();
+  int right1Distance = gally.getRight1Distance();
+  int right2Distance = gally.getRight2Distance();
+
+  // Serial.print("Front Distance: ");
   // Serial.println(frontDistance);
+  // Serial.print("Right Distance: ");
   // Serial.println(rightDistance);
+  if ((right1Distance >= 150) || (right1Distance < 0)) {
+    gally.turnRight();
+  } else if (frontDistance <= 150) {
+    gally.turnLeft();
+  } else {
+    if (right1Distance - right2Distance >= 20) {
+      gally.straightenRight();
+    } else if (right2Distance - right1Distance >= 20) {
+      gally.straightenLeft();
+    } else {
+      gally.moveForward();
+    }
+  }
+  delay(250);
 }
 
-// void loop() {
-//   // Get the front and right sensor distances
-//   int frontDistance = gally.getFrontDistance();
-//   int rightDistance = gally.getRightDistance();
-
-//   // Print the distances for debugging (optional)
-//   Serial.print("Front Distance: ");
-//   Serial.println(frontDistance);
-//   Serial.print("Right Distance: ");
-//   Serial.println(rightDistance);
-
-//   // Check the conditions and make decisions
-//   if (frontDistance < 20 && rightDistance < 20) {
-//     // If both front and right distances are less than 20 mm, turn left
-//     Serial.println("Turning Left...");
-//     gally.turnLeft();
-//   } 
-//   else if (frontDistance > 200 && rightDistance > 200) {
-//     // If both front and right distances are greater than 200 mm, turn right
-//     Serial.println("Turning Right...");
-//     gally.turnRight();
-//   } 
-//   else {
-//     // If none of the above conditions are met, move forward
-//     Serial.println("Moving Forward...");
-//     gally.moveForward();
-//   }
-
-//   // Add a small delay to avoid flooding the Serial Monitor with too many readings
-//   delay(500);
-// }
 
 // void loop() {
 //   WiFiClient client = server.available();
@@ -92,9 +65,24 @@ void loop() {
 //       gally.turnLeft();
 //     } else if (request.indexOf("GET /R") != -1) {
 //       gally.turnRight();
+//     } else if (request.indexOf("GET /X") != -1) {
+//       gally.straightenLeft();
+//     } else if (request.indexOf("GET /Y") != -1) {
+//       gally.straightenRight();
 //     } else if (request.indexOf("GET /F") != -1) {
 //       gally.moveForward();
-//     }
+//     } else if (request.indexOf("GET /D") != -1) {
+//       int frontDistance = gally.getFrontDistance();
+//       int right1Distance = gally.getRight1Distance();
+//       int right2Distance = gally.getRight2Distance();
+
+//       Serial.print("Front Distance: ");
+//       Serial.println(frontDistance);
+//       Serial.print("Right1 Distance: ");
+//       Serial.println(right1Distance);
+//       Serial.print("Right2 Distance: ");
+//       Serial.println(right2Distance);
+//     } 
 
 //     client.println("HTTP/1.1 200 OK");
 //     client.println("Content-type:text/html");

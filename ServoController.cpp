@@ -19,3 +19,11 @@ void ServoController::forward() {
 void ServoController::right() {
   myservo.write(RIGHT_POS);
 }
+
+void ServoController::halfRight() {
+  myservo.write(HALF_RIGHT);
+}
+
+void ServoController::halfLeft() {
+  myservo.write(HALF_LEFT);
+}

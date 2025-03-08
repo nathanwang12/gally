@@ -21,7 +21,8 @@ public:
 class Sensors {
 public:
     DistanceSensor front;
-    DistanceSensor right;
+    DistanceSensor right1;
+    DistanceSensor right2;
 
     Sensors();
     void init();

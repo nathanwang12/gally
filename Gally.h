@@ -18,10 +18,14 @@ class Gally {
 
     void init();
     void moveForward();
+    void stop();
     void turnLeft();
     void turnRight();
+    void straightenRight();
+    void straightenLeft();
     int getFrontDistance();
-    int getRightDistance();
+    int getRight1Distance();
+    int getRight2Distance();
 
   private:
     DRV8833Motor motor;
