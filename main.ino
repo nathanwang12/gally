@@ -21,29 +21,67 @@ void setup() {
 }
 
 void loop() {
-  int frontDistance = gally.getFrontDistance();
+  int front1Distance = gally.getFront1Distance();
+  int front2Distance = gally.getFront2Distance();
   int right1Distance = gally.getRight1Distance();
   int right2Distance = gally.getRight2Distance();
 
-  // Serial.print("Front Distance: ");
-  // Serial.println(frontDistance);
-  // Serial.print("Right Distance: ");
-  // Serial.println(rightDistance);
-  if ((right1Distance >= 150) || (right1Distance < 0)) {
+  // if (right1Distance - right2Distance >= 6) {
+  //   // gally.stop();
+  //   gally.straightenRight();
+  // } else if (right2Distance - right1Distance >= 6) {
+  //   // gally.stop();
+  //   gally.straightenLeft();
+  // }
+
+
+  if ((right1Distance >= 250) || (right1Distance < 0)) {
+    // gally.stop();
+    gally.inchForward();
     gally.turnRight();
-  } else if (frontDistance <= 150) {
+  } else if ((front1Distance <= 250) || (front2Distance <= 250)) {
+
+    // gally.stop();
     gally.turnLeft();
+  } else if (
+    (right1Distance - right2Distance >= 8) ||
+    (front2Distance - front1Distance >= 4)
+  ) {
+    // gally.stop();
+    gally.straightenRight();
+  } else if (
+    (right2Distance - right1Distance >= 8) ||
+    (front1Distance - front2Distance >= 4)
+  ) {
+    // gally.stop();
+    gally.straightenLeft();
   } else {
-    if (right1Distance - right2Distance >= 20) {
-      gally.straightenRight();
-    } else if (right2Distance - right1Distance >= 20) {
-      gally.straightenLeft();
-    } else {
-      gally.moveForward();
-    }
+    gally.moveForward();
   }
-  delay(250);
 }
+// void loop() {
+//   int frontDistance = gally.getFrontDistance();
+//   int right1Distance = gally.getRight1Distance();
+//   int right2Distance = gally.getRight2Distance();
+
+//   // Serial.print("Front Distance: ");
+//   // Serial.println(frontDistance);
+//   // Serial.print("Right Distance: ");
+//   // Serial.println(rightDistance);
+//   if ((right1Distance >= 200) || (right1Distance < 0)) {
+//     gally.turnRight();
+//   } else if (frontDistance <= 200) {
+//     gally.turnLeft();
+//   } else {
+//     if (right1Distance - right2Distance >= 20) {
+//       gally.straightenRight();
+//     } else if (right2Distance - right1Distance >= 20) {
+//       gally.straightenLeft();
+//     } else {
+//       gally.moveForward();
+//     }
+//   }
+// }
 
 
 // void loop() {
@@ -72,12 +110,15 @@ void loop() {
 //     } else if (request.indexOf("GET /F") != -1) {
 //       gally.moveForward();
 //     } else if (request.indexOf("GET /D") != -1) {
-//       int frontDistance = gally.getFrontDistance();
+//       int front1Distance = gally.getFront1Distance();
+//       int front2Distance = gally.getFront2Distance();
 //       int right1Distance = gally.getRight1Distance();
 //       int right2Distance = gally.getRight2Distance();
 
-//       Serial.print("Front Distance: ");
-//       Serial.println(frontDistance);
+//       Serial.print("Front1 Distance: ");
+//       Serial.println(front1Distance);
+//       Serial.print("Front2 Distance: ");
+//       Serial.println(front2Distance);
 //       Serial.print("Right1 Distance: ");
 //       Serial.println(right1Distance);
 //       Serial.print("Right2 Distance: ");

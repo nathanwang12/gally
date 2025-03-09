@@ -26,11 +26,12 @@ int DistanceSensor::getDistance() {
 }
 
 Sensors::Sensors()
-  : front(A0, 0x12), right1(A1, 0x14), right2(16, 0x16) {}
+  : front1(A0, 0x12), front2(19, 0x18), right1(A1, 0x14), right2(16, 0x16) {}
 
 void Sensors::init() {
   DEV_I2C.begin();
-  front.init();
+  front1.init();
+  front2.init();
   right1.init();
   right2.init();
 }

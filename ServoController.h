@@ -8,11 +8,11 @@ private:
     Servo myservo;
     int pwmPin;
 
-    const int LEFT_POS = 40;
-    const int HALF_LEFT = 74;
-    const int FORWARD_POS = 83;
-    const int HALF_RIGHT = 92;
-    const int RIGHT_POS = 126;
+    const int LEFT_POS = 44;
+    const int SLIGHT_LEFT = 78;
+    const int FORWARD_POS = 87;
+    const int SLIGHT_RIGHT = 96;
+    const int RIGHT_POS = 130;
 
 public:
     ServoController(int pwmPin);
@@ -20,8 +20,8 @@ public:
     void left();
     void forward();
     void right();
-    void halfLeft();
-    void halfRight();
+    void slightLeft();
+    void slightRight();
 };
 
 #endif

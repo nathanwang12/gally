@@ -20,10 +20,10 @@ void ServoController::right() {
   myservo.write(RIGHT_POS);
 }
 
-void ServoController::halfRight() {
-  myservo.write(HALF_RIGHT);
+void ServoController::slightRight() {
+  myservo.write(SLIGHT_RIGHT);
 }
 
-void ServoController::halfLeft() {
-  myservo.write(HALF_LEFT);
+void ServoController::slightLeft() {
+  myservo.write(SLIGHT_LEFT);
 }

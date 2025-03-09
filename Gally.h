@@ -10,7 +10,8 @@
 #define MOTOR_AIN2 33
 #define MOTOR_BIN1 12
 #define MOTOR_BIN2 27
-#define TURN_TIME 2000
+#define TURN_TIME 1000
+#define MOTOR_SPEED 120
 
 class Gally {
   public:
@@ -23,7 +24,10 @@ class Gally {
     void turnRight();
     void straightenRight();
     void straightenLeft();
-    int getFrontDistance();
+    void inchForward();
+    int isStopped();
+    int getFront1Distance();
+    int getFront2Distance();
     int getRight1Distance();
     int getRight2Distance();
 
@@ -31,6 +35,8 @@ class Gally {
     DRV8833Motor motor;
     ServoController servo;
     Sensors sensors;
+
+    int stopped;
 };
 
 #endif 
